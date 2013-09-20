@@ -72,8 +72,8 @@ Raise any questions as issues on GitHub
 
 ## FAQ
 
-* Can I use any additional frameworks or does it need to be hand coded? __It is expected that you will need to use
-additional libraries to complete the exercise, if you want to use whole frameworks, go for it.__
+* Can I use any additional frameworks or does it need to be hand coded? _It is expected that you will need to use
+additional libraries to complete the exercise, if you want to use whole frameworks, go for it._
 
 
 
