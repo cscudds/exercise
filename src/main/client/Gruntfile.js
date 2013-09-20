@@ -18,6 +18,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-ngmin');
   grunt.loadNpmTasks('grunt-html2js');
+  grunt.loadNpmTasks('grunt-express-server');
 
   /**
    * Load in our build configuration file.
@@ -539,7 +540,22 @@ module.exports = function ( grunt ) {
     }
   };
 
-  grunt.initConfig( grunt.util._.extend( taskConfig, userConfig ) );
+
+    /**
+     * Configure a web server as were makeing XHR requests
+     */
+    var serverConfig = {
+        express:{
+            dev:{
+                options:{
+                    script:'server.js'
+                }
+            }
+        }
+    };
+
+
+  grunt.initConfig( grunt.util._.extend( taskConfig, userConfig, serverConfig ) );
 
   /**
    * In order to make it safe to just compile or copy *only* what was changed,
@@ -550,6 +566,8 @@ module.exports = function ( grunt ) {
    */
   grunt.renameTask( 'watch', 'delta' );
   grunt.registerTask( 'watch', [ 'build', 'karma:unit', 'delta' ] );
+
+    grunt.registerTask('server', ['express:dev']);
 
   /**
    * The default task is to build and compile.
