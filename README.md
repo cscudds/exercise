@@ -14,7 +14,7 @@
 
 To run the project, use maven
 
-```
+```sh
 mvn verify
 ```
 
@@ -33,7 +33,7 @@ This will:
 ## Features
 
 If you only want to run one feature at a time add a tag `@wip` above the feature like below:
-```
+```cucumber
   @wip
   Scenario: description...
     When ...
@@ -41,7 +41,7 @@ If you only want to run one feature at a time add a tag `@wip` above the feature
 ```
 
 And run maven with the wip profile:
-```
+```sh
 mvn verify -Pwip
 ```
 
@@ -65,6 +65,11 @@ make the `handle-many-requests.feature` pass.
 Create a solution that **will allow** the work to be handed off to another process (not thread)
 as we don't want to be keeping resources tied up on the web server, but for this exercise keep it
 running within the same process.
+
+### Bonus/Optional - AngularJS Client
+
+Build a client that will use the Abandoned Basket and Order Details REST end points. For more details
+see the README.md in `src/main/client`
 
 ## Questions?
 
