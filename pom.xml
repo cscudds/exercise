@@ -18,8 +18,18 @@
 
         <com.sun.jersey-version>1.17.1</com.sun.jersey-version>
 
+        <cucumber-tag/>
         <cucumber-jvm.version>1.1.5</cucumber-jvm.version>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>wip</id>
+            <properties>
+                <cucumber-tag>Wip</cucumber-tag>
+            </properties>
+        </profile>
+    </profiles>
 
     <build>
         <plugins>
@@ -73,7 +83,7 @@
                 <version>2.12.4</version>
                 <configuration>
                     <includes>
-                        <include>features/RunCucumberTests.java</include>
+                        <include>features/RunCucumber${cucumber-tag}Tests.java</include>
                     </includes>
                 </configuration>
                 <executions>

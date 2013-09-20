@@ -3,6 +3,7 @@ Feature:
   As a user
   I want to be greeted
 
+  @manual
   Scenario: get hello world
     When I GET "/hello"
     Then I see "Hello World!"
