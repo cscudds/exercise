@@ -62,12 +62,18 @@ a check-out will purchase all the items that have been added to a basket since t
 We can't keep the client waiting, without changing the `LongRunningLockedProcess` class
 make the `handle-many-requests.feature` pass.
 
-Create a solution that will easily allow the work to be handed off the web server
-to another process (not thread) as we don't want to be keeping resources tied up on the web server.
+Create a solution that **will allow** the work to be handed off to another process (not thread)
+as we don't want to be keeping resources tied up on the web server, but for this exercise keep it
+running within the same process.
 
 ## Questions?
 
 Raise any questions as issues on GitHub
+
+## FAQ
+
+* Can I use any additional frameworks or does it need to be hand coded? __It is expected that you will need to use
+additional libraries to complete the exercise, if you want to use whole frameworks, go for it.__
 
 
 
