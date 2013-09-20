@@ -13,7 +13,7 @@ $ bower install
 $ grunt watch & grunt server
 ```
 
-Then open a browser and go to (http://localhost:3000/)
+Then open a browser and go to [http://localhost:3000/](http://localhost:3000/)
 
 
 ## Exercise
