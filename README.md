@@ -9,6 +9,10 @@
 1. Push
 1. Send a Pull Request
 
+### Alternatively...
+
+You can just clone this repo to your machine and instead of doing the Push/Pull Request,
+tar/zip the directory after doing an `mvn clean` and email to technical at intilery.com.
 
 ## Running the project...
 
