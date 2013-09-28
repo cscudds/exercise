@@ -17,6 +17,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
+import java.lang.Integer;
 import java.util.*;
 
 @Component
@@ -98,9 +99,9 @@ public class TransactionOrderDetailsResource {
                 DateTime basketAddedDate = basket.getProperty(UserGraphRepository.BASKET_CREATED_AT_KEY);
                 if (orderDateTimeInterval.contains(basketAddedDate)) {
                     Vertex product = basket.getVertex(Direction.IN);
-                    int basketQuantity = basket.getProperty(UserGraphRepository.BASKET_QUANTITY_KEY);
+                    int basketQuantity = Integer.valueOf(basket.getProperty(UserGraphRepository.BASKET_QUANTITY_KEY).toString());
                     if (list.contains(product)) {
-                        int productQuantity = product.getProperty(UserGraphRepository.BASKET_QUANTITY_KEY);
+                        int productQuantity = Integer.valueOf(product.getProperty(UserGraphRepository.BASKET_QUANTITY_KEY).toString());
                         product.setProperty(UserGraphRepository.BASKET_QUANTITY_KEY, basketQuantity + productQuantity);  // assuming updating the property won't get persisted
                     } else {
                         product.setProperty(UserGraphRepository.BASKET_QUANTITY_KEY, basketQuantity);
