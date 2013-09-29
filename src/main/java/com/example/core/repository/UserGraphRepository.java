@@ -9,6 +9,16 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UserGraphRepository {
+
+
+    public static final String BASKET_QUANTITY_KEY = "qty";
+    public static final String BASKET_CREATED_AT_KEY = "createdAt";
+    public static final String CHECKOUT_CREATED_AT_KEY = "createdAt";
+    public static final String CHECK_OUT_EDGE_LABEL = "check-out";
+    public static final String ADD_TO_BASKET_EDGE_LABEL = "add to basket";
+    public static final String VISIT_EDGE_LABEL = "visit";
+    public static final String CHECKOUT_ORDER_ID_KEY = "orderID";
+
     public Vertex getForUser(String email) {
         Graph graph = new TinkerGraph();
 
@@ -41,16 +51,16 @@ public class UserGraphRepository {
     private void checkout(Graph graph, Vertex visit, String orderID, DateTime when) {
         Vertex order = graph.addVertex(null);
         order.setProperty("type", "order");
-        order.setProperty("orderID", orderID);
+        order.setProperty(CHECKOUT_ORDER_ID_KEY, orderID);
 
-        Edge e = graph.addEdge(null, visit, order, "check-out");
-        e.setProperty("createdAt", when);
+        Edge e = graph.addEdge(null, visit, order, CHECK_OUT_EDGE_LABEL);
+        e.setProperty(CHECKOUT_CREATED_AT_KEY, when);
     }
 
     private void addToBasket(Graph graph, Vertex visit, Vertex product, int qty, DateTime when) {
-        Edge e = graph.addEdge(null, visit, product, "add to basket");
-        e.setProperty("qty", qty);
-        e.setProperty("createdAt", when);
+        Edge e = graph.addEdge(null, visit, product, ADD_TO_BASKET_EDGE_LABEL);
+        e.setProperty(BASKET_QUANTITY_KEY, qty);
+        e.setProperty(BASKET_CREATED_AT_KEY, when);
     }
 
     private Vertex addProduct(Graph graph, String name, double price, String image) {
@@ -66,7 +76,7 @@ public class UserGraphRepository {
         Vertex visit = graph.addVertex(null);
         visit.setProperty("type", "visit");
         visit.setProperty("sessionStarted", visitStarted);
-        graph.addEdge(null, customer, visit, "visit");
+        graph.addEdge(null, customer, visit, VISIT_EDGE_LABEL);
         return visit;
     }
 }
